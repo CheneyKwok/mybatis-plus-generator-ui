@@ -6,12 +6,12 @@ public class TestApplication {
 
 
     public static void main(String[] args) {
-        GeneratorConfig config = GeneratorConfig.builder().jdbcUrl("jdbc:mysql://localhost:3306/autoapi")
-                .userName("root")
-                .password("root")
+        GeneratorConfig config = GeneratorConfig.builder().jdbcUrl("jdbc:mysql://118.31.224.105:35487/smart_link_engine")
+                .userName("sle_dev")
+                .password("O*&tyvcaze4")
                 .port(8068)
                 .driverClassName("com.mysql.cj.jdbc.Driver")
-                .basePackage("com.github.davidfantasy.mybatisplus.generatorui.example")
+                .basePackage("com.xiangzheng.smartengine")
                 //数据库表前缀，生成entity名称时会去掉
                 .tablePrefix("t_")
                 .nameConverter(new NameConverter() {
@@ -22,11 +22,12 @@ public class TestApplication {
 
                     @Override
                     public String controllerNameConvert(String entityName) {
-                        return entityName + "Action";
+                        return entityName + "Controller";
                     }
                 })
                 .build();
         MybatisPlusToolsApplication.run(config);
+        System.out.println("http://localhost:" + config.getPort());
     }
 
 
